@@ -25,7 +25,7 @@ SLPool::SLPool(size_t bytes) {
 *	@return
 */
 SLPool::~SLPool() {
-
+	delete mp_Pool;
 }
 
 /*

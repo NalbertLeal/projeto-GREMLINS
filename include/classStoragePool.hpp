@@ -13,7 +13,7 @@ class StoragePool {
 	public:
 
 		//StoragePool public destructor
-		virtual ~StoragePool();
+		virtual ~StoragePool() {};
 
 		//StoragePool public methods
 		virtual void *Allocate (size_t) = 0;

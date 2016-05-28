@@ -35,7 +35,7 @@ class SLPool: public StoragePool {
 	private:
 		unsigned int mui_NumberOfBlocks;
 		Block *mp_Pool;				//!< Head of list.
-		Block &mr_Sentinel;		//!< End of the list
+		Block mr_Sentinel;		//!< End of the list
 };
 
 #include "classSPool.inl"
