@@ -1,34 +1,43 @@
-#ifndef _CLASSSPOOL_HPP_
-#define _CLASSSPOOL_HPP_
+#ifndef _CLASSSLPOOL_HPP_
+#define _CLASSSLPOOL_HPP_
 
 #include <iostream>
 
-#include "classSomePool.inl"
-
-// char is 1byte so byte going to be declarade as char to have 1 bit of size.
-//typedef char byte;
-
-/*
-*	@brief		Struct Tag define the tag that going to be used front of a memory block to define if it's a block of the OS or of a GM.
-*/
-struct Tag {
-	StoragePool * pool;
-};
+#include "classStoragePool.hpp"
 
 /*
 *	@brief		Class StoragePool is a abstract class. Using this class other class going to be created to use this methods and control the memory.
 */
-class StoragePool {
+class SLPool: public StoragePool {
 	public:
+		struct Header {
+			unsigned int mui_Length;
+			Header() : mui_Length(0u) {/* Empty */};
+		};
 
+		struct Block : public Header {
+			enum { BlockSize = 16 }; // Each block has 16 bytes.
+			union {
+				Block *mp_Next;
+				char mc_RawArea[BlockSize - sizeof(Header)];
+			};
+			Block() : Header(), mp_Next(nullptr) { /* Empty */ };
+		};
+
+		//SLPool public constructor
+		explicit SLPool(size_t bytes = 1024);
 		//StoragePool public destructor
-		virtual ~StoragePool ();
-
+		~SLPool();
 		//StoragePool public methods
-		virtual void *Allocate (size_t) = 0;
-		virtual void Free (void *) = 0;
+		void *Allocate (size_t);
+		void Free (void *);
 
 	private:
+		unsigned int mui_NumberOfBlocks;
+		Block *mp_Pool;				//!< Head of list.
+		Block &mr_Sentinel;		//!< End of the list
 };
+
+#include "classSPool.inl"
 
 #endif
