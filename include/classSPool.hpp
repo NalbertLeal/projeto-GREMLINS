@@ -5,8 +5,8 @@
 
 #include "classStoragePool.hpp"
 
-/*
-*	@brief		Class StoragePool is a abstract class. Using this class other class going to be created to use this methods and control the memory.
+/**
+*	@brief		Class SLPoll define the methods, structs and variables of the memory manager.
 */
 class SLPool: public StoragePool {
 	public:
@@ -30,12 +30,14 @@ class SLPool: public StoragePool {
 		~SLPool();
 		//StoragePool public methods
 		void *Allocate (size_t);
+		void *AllocateBestFit (size_t);
 		void Free (void *);
+		void showPool();
 
 	private:
 		unsigned int mui_NumberOfBlocks;
-		Block *mp_Pool;				//!< Head of list.
-		Block mr_Sentinel;		//!< End of the list
+		Block *mp_Pool;		// Head of list.
+		Block mr_Sentinel;	// End of the list
 };
 
 #include "classSPool.inl"
