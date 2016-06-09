@@ -117,14 +117,12 @@ void simulation() {
 	int *Alloc[7];
 
 	// Allocating 40 integers 4 times to test allocation
-    for (int i = 0; i < 4; i++) {
-        Alloc[i] = new(gm) int[10];
-        std::cout << "[" << i << "] <<< Allocating 40 integers\n"
-                  << std::string(8, ' ');
+    for (int i = 0; i < 3; i++) {
+        Alloc[i] = new(gm) int[40];
+        std::cout << "[" << i << "] <<< Allocating 40 integers\n";
         gm.showPool();
     }
-
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 40; i++) {
         Alloc[0][i] = i;
         Alloc[1][i] = i;
         Alloc[2][i] = i;
@@ -159,7 +157,7 @@ void simulation() {
 			std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
     		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
 
-    		std::cout << "SLPool was " << time_span.count() << " seconds.\n\n";
+    		std::cout << "SLPool: " << time_span.count() << " seconds.\n\n";
 		}
 		else{
 			std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
@@ -167,14 +165,17 @@ void simulation() {
 			std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
     		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
 
-    		std::cout << "OS was " << time_span.count() << " seconds.\n\n";
+    		std::cout << "OS: " << time_span.count() << " seconds.\n\n";
 		}
 	
-		if((count == 1) && (SLPoolTime > OSTime)) {
-			std::cout << ">>> the memory manager is faster.\n";
-		}
-		else if((count == 1) && (OSTime < SLPoolTime)) {
-			std::cout << ">>> the OS is faster.\n";
+		if(count == 1) {
+			if(OSTime < SLPoolTime) {
+				std::cout << ">>> the OS is faster.\n";
+			}
+			else {
+				std::cout << ">>> the memory manager is faster.\n";
+			}
+			
 		}
 	}
 }

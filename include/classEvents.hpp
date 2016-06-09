@@ -30,4 +30,4 @@ class Event {
     std::time_t time;  
 };
 
-#ifndef
+#endif

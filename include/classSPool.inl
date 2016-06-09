@@ -19,7 +19,7 @@ SLPool::SLPool(size_t bytes) {
 	this->mp_Pool->mui_Length = mui_NumberOfBlocks - 1;
 	// the block is complety free, so the mp_Next is nullptr
 	this->mp_Pool->mp_Next = nullptr;
-	// indicate the number of free frre area in blocks
+	// indicate the number of free areas in blocks
 	this->mr_Sentinel.mui_Length = this->mui_NumberOfBlocks;
 	// point to the mp_pool
 	this->mr_Sentinel.mp_Next = this->mp_Pool;

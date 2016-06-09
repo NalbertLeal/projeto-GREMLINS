@@ -41,15 +41,25 @@
   
     g++ -std=c++11 -I include src/main.cpp -o bin/gremlins
   
-  Também pode se utilizar o makefile, basta digitar o comando a seguir que o código será compilado:
+  Também pode se utilizar o makefile, basta digitar o comando a seguir que o código será compilado:  
   
-    make
+  Para codigo otimizado ( geralmente o gerenciador de memoria ganha do SO):  
   
+    make YES
+  
+  Para codigo não otimizado ( geralmente o SO ganha do gerenciador de memoria):  
+  
+    make NO
+
+  Para compilar codigo para debbug:  
+  
+    make DEBBUG
+
   O arquivo gerado se encontra dentro da pasta bin do diretorio do projeto e possui o nome gremlins. Para executar o arquivo basta entrar na pasta bin e digitar ./gremlins para ver um exemplo do uso do gerenciador de memória implementado.  
 
 ### Testes realizados:
   
-  Os testes realizados foram feitos com base no que pede o pdf enviado pelo professor Selan. Esses testes podem não refletir algum eventual bug que testes profundos no codigo revelariam. A ajuda de Yuri Reinaldo e Adelino Afonso foi extremamente importante para copreender a implementação do teste.
+  Os testes realizados foram feitos com base no que pede o pdf enviado pelo professor Selan. Esses testes podem não refletir algum eventual bug que testes profundos no codigo revelariam. A ajuda de Yuri Reinaldo e Adelino Afonso foi extremamente importante para copreender como implementar os testes.
     
 ### Bugs:
   
@@ -59,8 +69,10 @@
 
   O codigo será postado no GitHub para posiveis avaliações futuras. O projeto é muito interessante e pode ter suas ideias fundamentais sendo utilizadas base para diversos projetos futuros.
 
-  Esse projeto se encontra no Bitbucket no link:  
-   [link do projeto](https://bitbucket.org/nalbertg/gremlins)
+  Esse projeto se encontra no Bitbucket e Github nos links:  
+   https://bitbucket.org/nalbertg/gremlins  
+   e  
+   https://github.com/nalbertg/projeto-GREMLINS
 
 
 ### Sobre mim:
