@@ -12,7 +12,7 @@
 - **Observações**;
 - **Sobre mim**;
 
-##### status do projeto: **Em desenvolvimento**  
+##### status do projeto: **Finalizado**  
     
 #### Introdução:  
   Este projeto implementa um gerenciador de memória em c++. Será utilizado por codigos escritos em c++ para fazer todo o manejamento de memória não deixando a cargo do programador criar ou deletar dados da memória alocada dinamicamente.
